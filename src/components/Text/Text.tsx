@@ -1,9 +1,22 @@
 import React from 'react';
-import {Text as RNText, TextProps, TextStyle} from 'react-native';
+import {
+  Text as RNText,
+  TextProps as RNTextProps,
+  TextStyle,
+} from 'react-native';
 
-export const Text = ({children, ...rest}: TextProps) => {
+interface TextProps extends RNTextProps {
+  preset?: TextVariants;
+}
+
+export const Text = ({
+  children,
+  preset = 'headingMedium',
+  style,
+  ...rest
+}: TextProps) => {
   return (
-    <RNText style={fontSizes.headingLarge} {...rest}>
+    <RNText style={[fontSizes[preset], style]} {...rest}>
       {children}
     </RNText>
   );

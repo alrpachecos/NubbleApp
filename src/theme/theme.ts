@@ -36,8 +36,29 @@ export const theme = createTheme({
     success: palette.greenSuccess,
     successLight: palette.greenSuccessLight,
   },
-  spacing: {},
-  borderRadii: {},
+  spacing: {
+    spacing4: 4,
+    spacing8: 8,
+    spacing10: 10,
+    spacing12: 12,
+    spacing14: 14,
+    spacing16: 16,
+    spacing20: 20,
+    spacing24: 24,
+    spacing32: 32,
+    spacing40: 40,
+    spacing48: 48,
+    spacing56: 56,
+  },
+  borderRadii: {
+    borderRadius8: 8,
+    borderRadius12: 12,
+    borderRadius16: 16,
+  },
+  textVariants: {
+    defaults: {},
+  },
 });
 
 export type Theme = typeof theme;
+export type ThemeColors = keyof Theme['colors'];

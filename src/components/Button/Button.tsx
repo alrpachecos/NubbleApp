@@ -1,14 +1,38 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
 import {Text} from '../Text/Text';
-import {useTheme} from '@shopify/restyle';
-import {Theme} from '../../theme/theme';
+import {TouchableOpacityBox, TouchableOpacityBoxProps} from '../Box/Box';
+import {buttonPresets} from './ButtonPresets';
+import {ActivityIndicator} from '../ActivityIndicator/ActivityIndicator';
 
-export const Button = () => {
-  const {colors} = useTheme<Theme>();
+export type ButtonPreset = 'primary' | 'outline';
+
+interface ButtonProps extends TouchableOpacityBoxProps {
+  title: string;
+  loading?: boolean;
+  preset?: ButtonPreset;
+  disabled?: boolean;
+}
+
+export const Button = ({
+  title,
+  loading,
+  disabled,
+  preset = 'primary',
+  ...touchableOpacityBoxProps
+}: ButtonProps) => {
+  const buttonPreset = buttonPresets[preset][disabled ? 'disabled' : 'default'];
   return (
-    <TouchableOpacity style={{backgroundColor: colors.carrotSecondary}}>
-      <Text>Entrar</Text>
-    </TouchableOpacity>
+    <TouchableOpacityBox
+      disabled={disabled || loading}
+      paddingHorizontal="spacing20"
+      height={50}
+      alignItems="center"
+      justifyContent="center"
+      borderRadius="borderRadius16"
+      {...buttonPreset.container}
+      {...touchableOpacityBoxProps}>
+      {loading && <ActivityIndicator color={buttonPreset.content} />}
+      {!loading && <Text color={buttonPreset.content}>{title}</Text>}
+    </TouchableOpacityBox>
   );
 };

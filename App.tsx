@@ -11,7 +11,18 @@ function App(): React.JSX.Element {
       <SafeAreaView>
         <Text preset="headingLarge">Coffstack</Text>
 
-        <Button />
+        <Button
+          title="Primary"
+          preset="primary"
+          disabled
+          marginBottom="spacing24"
+        />
+        <Button
+          disabled
+          title="Outline"
+          preset="outline"
+          marginBottom="spacing24"
+        />
       </SafeAreaView>
     </ThemeProvider>
   );

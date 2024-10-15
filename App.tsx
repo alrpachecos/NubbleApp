@@ -1,20 +1,48 @@
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import {Text} from './src/components/Text/Text';
 import {ThemeProvider} from '@shopify/restyle';
 import {theme} from './src/theme/theme';
 import {Icon} from './src/components/Icon/Icon';
+import {Button} from './src/components/Button/Button';
+import {TextInput} from './src/components/TextInput/TextInput';
 
 function App(): React.JSX.Element {
   return (
     <ThemeProvider theme={theme}>
       <SafeAreaView>
-        <Text preset="headingLarge">Coffstack</Text>
+        <View style={{paddingHorizontal: 24}}>
+          <Text preset="headingLarge" marginBottom="spacing8">
+            Olá
+          </Text>
+          <Text preset="paragraphLarge" marginBottom="spacing40">
+            Digite seu e-mail e senha para entrar
+          </Text>
 
-        <Icon name="eyeOn" color="error" size={50} />
-        <Icon name="eyeOff" color="carrotSecondary" size={40} />
-        <Icon name="arrowRight" color="success" size={100} />
-        <Icon name="checkRound" color="greenSuccess" size={70} />
+          <TextInput
+            label="E-mail"
+            placeholder="Digite seu e-mail"
+            errorMessage="Mensagem de erro"
+            boxProps={{mb: 'spacing20'}}
+          />
+
+          <TextInput
+            label="Senha"
+            placeholder="Digite sua senha"
+            RightComponent={<Icon name="eyeOn" color="gray2" />}
+          />
+
+          <Text preset="paragraphSmall" bold color="primary">
+            Esqueci minha senha
+          </Text>
+
+          <Button title="Entrar" marginTop="spacing48" />
+          <Button
+            title="Criar uma conta"
+            preset="outline"
+            marginTop="spacing12"
+          />
+        </View>
       </SafeAreaView>
     </ThemeProvider>
   );

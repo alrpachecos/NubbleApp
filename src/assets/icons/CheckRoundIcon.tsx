@@ -2,12 +2,12 @@ import React from 'react';
 
 import {Svg, Path, Circle} from 'react-native-svg';
 
-import {theme} from '../../theme/theme';
+import {palette} from '../../theme/theme';
 import {IconBaseProps} from '../../components/Icon/Icon';
 
 export function CheckRoundIcon({
   size = 48,
-  color = theme.colors.greenSuccess,
+  color = palette.greenSuccess,
 }: IconBaseProps) {
   return (
     <Svg width={size} height={size} viewBox="0 0 48 48" fill="none">

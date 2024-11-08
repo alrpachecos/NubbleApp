@@ -4,39 +4,53 @@ import {Text} from '../../../components/Text/Text';
 import {TextInput} from '../../../components/TextInput/TextInput';
 import {Button} from '../../../components/Button/Button';
 import {PasswordInput} from '../../../components/PasswordInput/PasswordInput';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../../../routes/Routes';
+import {useResetNavigationSuccess} from '../../../hooks/useResetNavigationSuccess';
 
-export const SignUpScreen = () => {
+type Props = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>;
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const SignUpScreen = ({navigation}: Props) => {
+  const {reset} = useResetNavigationSuccess();
   const submitForm = () => {
-    // TODO: implementar
+    reset({
+      title: 'Sua conta foi criada com sucesso',
+      description: 'Agora é só fazer login na nossa plataforma',
+      icon: {
+        name: 'checkRound',
+        color: 'success',
+      },
+    });
   };
   return (
     <Screen canGoBack scrollable>
-      <Text preset="headingLarge" mb="spacing32">
+      <Text preset="headingLarge" marginBottom="spacing32">
         Criar uma conta
       </Text>
 
       <TextInput
         label="Seu username"
         placeholder="@"
-        boxProps={{mb: 'spacing20'}}
+        boxProps={{marginBottom: 'spacing20'}}
       />
 
       <TextInput
         label="Nome completo"
         placeholder="Digite seu nome completo"
-        boxProps={{mb: 'spacing20'}}
+        boxProps={{marginBottom: 'spacing20'}}
       />
 
       <TextInput
         label="E-mail"
         placeholder="Digite seu e-mail"
-        boxProps={{mb: 'spacing20'}}
+        boxProps={{marginBottom: 'spacing20'}}
       />
 
       <PasswordInput
         label="Senha"
         placeholder="Digite sua senha"
-        boxProps={{mb: 'spacing48'}}
+        boxProps={{marginBottom: 'spacing48'}}
       />
 
       <Button title="Criar uma conta" onPress={submitForm} />

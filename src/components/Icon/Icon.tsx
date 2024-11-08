@@ -40,7 +40,7 @@ export interface IconBaseProps {
   color?: string;
 }
 
-interface IconProps {
+export interface IconProps {
   name: IconName;
   color?: ThemeColors;
   size?: number;
